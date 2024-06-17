@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>html Events</title>
+</head>
+<body style="background-color: #414141; color:aliceblue">
+    <h2>Amazing images</h2>
+    <ul id="images">
+        <li><img width="200px" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxljCiU3pRUXpw-39aklTNk7BDV3G9Dn7ocw&s" alt="painting" id="photoshop1" "></li>
+        <li><img width="200px" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRa2MEx2kzohgwYsPRNF4vNxWjBBMspgYpwRdCWRmHkW_RoyLx5x2qJLsQkiNdIB2T8l7c&usqp=CAU" alt="" id="photoshop2"></li>
+        <li><img width="200px" id="photoshop3" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkwgGaySrMIWm9uweSIZuHHu3D8y2O2Of5fOWYe1REyLw-s0074s7e336dCWNRGCxd47M&usqp=CAU" alt=""></li>
+        <li><img width="200px" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT91ca18hoyAhlzVbGhdnv_3SWt6SKG2WBf1FhruXcmhH6q88XUsfYILnp8-ONsAgmcHrg&usqp=CAU" alt="" id="photoshop4"></li>
+        <li><a style="color: aliceblue;" id="google" href="www.google.com">google</a></li>   
+    </ul>
+
+    <script>
+     // document.getElementById('photoshop2').onclick=function(){
+       // alert('OWL')
+     // }
+     
+
+     //type timestamp preventDefault
+     // target toElement srcElement, currentTarget
+     // clientX,clientY,screenX,screenY
+     // altKey ctrlKey shiftKey keyCode
+     document.getElementById('images').addEventListener('click',function(e){
+        console.log("clicked inside the ul")
+        //alert('OWl clicked')
+     },false)
+
+     document.getElementById('photoshop2').addEventListener('click',function(e){
+        console.log("clicked owl image")
+        e.stopPropagation()
+        //alert('OWl clicked')
+     },false)
+     document.getElementById('google').addEventListener('click',function(e){
+         console.log('google clicked')
+        e.preventDefault()
+
+     })
+
+     document.querySelector('#images').addEventListener('click',function(e){
+        if (e.target.tagName=='img'){
+            let removeit=e.target.parentNode
+            removeit.remove()
+
+        }
+        
+       //removeit.parentNode.removeChild(removeit)
+     })
+    </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sync Async</title>
+  </head>
+  <body>
+    <h1>Chai or Javascript</h1>
+    <button id="start">Start</button>
+    <button id="stop">stop</button>
+    <script>
+      function randomColor() {
+        let randomhex = "#";
+        const colorCode = "0123456789ABCDEF";
+        for (let i = 0; i < 6; i++) {
+          randomhex += colorCode[Math.floor(Math.random() * 16)];
+        }
+        return randomhex;
+      }
+      let intervalId;
+
+      const startChangingColor = function () {
+        if(!intervalId){
+            intervalId = setInterval(changeBgColor, 1000);
+        }
+        function changeBgColor() {
+          document.body.style.backgroundColor = randomColor();
+        }
+      };
+
+      const stopChangingColor = function () {
+        clearInterval(intervalId);
+        intervalId=null
+      };
+      document
+        .querySelector("#start")
+        .addEventListener("click", startChangingColor);
+      document
+        .querySelector("#stop")
+        .addEventListener("click", stopChangingColor);
+    </script>
+  </body>
+</html>
